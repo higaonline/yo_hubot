@@ -1,1 +1,4 @@
-["lisb-hubot-redis-brain"]
+[
+  "lisb-hubot-redis-brain",
+  "hubot-mackerel-graph"
+]
