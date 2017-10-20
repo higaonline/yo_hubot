@@ -45,24 +45,22 @@ module.exports = (robot) => {
     uom.service_code = process.env.IIJ_SERVICE_CODE
     uom.master_id = process.env.IIJ_MASTER_ID
 
-    parameters = xxx.mthod(uom)
-
     host = "#{HOST}"
-
     path = "/r/#{APIVERSION}/#{API}.json"
-
     data = ''
 
     callback = ->
         res.end data
 
-    https.post {host: , path: path}, (res) ->
-        res.on 'data', (chunk) ->
-            data += chunk.toString()
-        res.on 'end', () ->
-            json = JSON.parse(data)
-            console.log "UOM response ", data
-            callback()
+    request.post
+      url: 'http://#{HOST}/r/#{APIVERSION}/#{API}.json'
+      body: 'something'
+      headers: {'Content-Type': 'application/json'}
+      headers: {'x-iijapi-Expire': '#{IIJAPI_EXPIRE}'}
+      headers: {'x-iijapi-SignatureMethod': 'HmacSHA256'}
+      headers: {'x-iijapi-SignatureVersion': '2'}
+      headers: {'Authorization:IIJAPI': '#{IIJAPI_ACCESS_KEY}:#{SIGN}'}
+    , (err, response, body) ->
 
 StartMonitoringHelp = (msg) ->
     txt = "StartMonitoring <IP> <Monitoring ID>"
