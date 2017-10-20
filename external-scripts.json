@@ -1,4 +1,6 @@
 [
   "lisb-hubot-redis-brain",
-  "hubot-mackerel-graph"
+  "hubot-mackerel-graph",
+  "uom-api",
+  "google"
 ]
